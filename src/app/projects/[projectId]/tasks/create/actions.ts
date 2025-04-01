@@ -40,12 +40,13 @@ let taskId:string;
     };
     taskId= task.id;
 
+
   } catch (error) {
     console.log(error);
     return {
       message: "Failed to create a task!",
     };
   }
-      redirect(`/tasks/${taskId}`);
-  
+  // add redirect later     redirect(`/projects/${projectId}/tasks/${taskId}`);
+
 }
