@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link"; // Import Link for navigation
 import { Button } from "@/components/ui/button";
+import DeleteProjectButton from "@/components/DeleteProjectButton";
 
 type Params = Promise<{
   projectId: string;
@@ -59,6 +60,7 @@ export default async function ProjectDetailsPage(props: Props) {
         ) : (
           <p className="text-gray-400">No tasks available.</p>
         )}
+        <DeleteProjectButton projectId={project.id}/>
       </div>
     </>
   );
