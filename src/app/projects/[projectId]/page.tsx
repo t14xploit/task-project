@@ -59,7 +59,7 @@ const projectId = params.projectId;
 
         <div className="mt-6 flex gap-4">
         <Button asChild variant="secondary">
-          <Link href={`/project/${project.id}/edit`}>Edit project</Link>
+          <Link href={`/projects/${project.id}/edit`}>Edit project</Link>
         </Button>
           <DeleteProjectButton projectId={project.id} />
         </div>
