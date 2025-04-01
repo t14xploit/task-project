@@ -20,14 +20,16 @@ export async function createProject(prevState: unknown, formData: FormData) {
             error: result.error.message,
         };
     }
+    let projectId: string;
 
     try {
-        await prisma.project.create({
+        const project = await prisma.project.create({
             data: {
                 ...result.data,
                 description: result.data.description ?? ""
             },
         });
+        projectId= project.id;
     } catch (error) {
         console.log(error);
         return {
@@ -35,5 +37,5 @@ export async function createProject(prevState: unknown, formData: FormData) {
         };
     }
 
-    redirect("/projects/{projectId}");
+    redirect(`/projects/${projectId}`);
 }
