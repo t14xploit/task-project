@@ -15,10 +15,13 @@ export default function ProjectCard({project}:ProjectCardProps) {
         <h2 className="text-2xl font-bold">{project.name}</h2>
         <h3 className="text-lg text-gray-400">{project.description}</h3>
         <p className="text-sm text-gray-300">Created: {formattedDate}</p>
-<Button asChild>
 
-        <Link href={`/projects/${project.id}`} >Details</Link>
-</Button>
+        <Link href={`/projects/${project.id}`} >
+        <Button className="w-full">Details
+
+        </Button>
+        </Link>
+
     </div>
   )
 }

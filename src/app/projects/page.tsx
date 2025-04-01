@@ -12,10 +12,13 @@ return (
   <div className="flex justify-between ">
   <h1 className="text-3xl font-bold ">
 Projects List  </h1>
-<Button>
+
     <Link href="/projects/new">
+    <Button>
+
     New Project
-    </Link> </Button>
+    </Button>
+    </Link> 
   </div>
 
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
