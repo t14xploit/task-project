@@ -31,6 +31,8 @@ const projectId = params.projectId;
     <Card className="max-w-4xl mx-auto mt-8">
       <CardHeader>
         <CardTitle className="text-2xl font-semibold">{project.name}</CardTitle>
+        <p className="text-sm text-gray-500">Description: {project.description??"No description"}</p>
+
         <p className="text-sm text-gray-500">Created at: {formattedDate}</p>
       </CardHeader>
       <CardContent>
