@@ -9,5 +9,5 @@ export async function deleteProject(projectId: string){
             id:projectId
         }
     });
-    redirect("/books");
+    redirect("/projects");
 }

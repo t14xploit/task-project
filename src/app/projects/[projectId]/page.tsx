@@ -33,7 +33,7 @@ export default async function ProjectDetailsPage(props: Props) {
   return (
     <>
       <div>
-        <h3 className="text-xl font-bold text-white">{project.name}</h3>
+        <h3 className="text-xl font-bold">{project.name}</h3>
         <p className="mt-4 text-sm text-gray-300">Created at: {formattedDate}</p>
         
         <div className="mt-4">
