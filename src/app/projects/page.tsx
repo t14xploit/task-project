@@ -10,7 +10,7 @@ return (
     <>
 <div className="max-w-4xl mx-auto m-12 ">
   <div className="flex justify-between ">
-  <h1 className="text-3xl font-bold ">
+  <h1 className="text-3xl font-bold mb-8">
 Projects List  </h1>
 
     <Link href="/projects/new">
