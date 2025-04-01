@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import ProjectCard from "@/components/ProjectCard";
+import { Button } from "@/components/ui/button";
 export default async  function ProjectsPage() {
 
     
@@ -11,7 +12,10 @@ return (
   <div className="flex justify-between ">
   <h1 className="text-3xl font-bold ">
 Projects List  </h1>
-  {/* <ProjectCreateButton/> */}
+<Button>
+    <Link href="/projects/new">
+    New Project
+    </Link> </Button>
   </div>
 
   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
