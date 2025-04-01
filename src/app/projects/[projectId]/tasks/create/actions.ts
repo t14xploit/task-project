@@ -2,6 +2,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 // Task schema validation
@@ -23,7 +24,7 @@ export async function createTask(projectId: string, prevState: unknown, formData
       error: result.error.message,
     };
   }
-
+let taskId:string;
   try {
     const task = await prisma.task.create({
       data: {
@@ -37,10 +38,14 @@ export async function createTask(projectId: string, prevState: unknown, formData
     return {
       message: `Task "${task.title}" created successfully!`,
     };
+    taskId= task.id;
+
   } catch (error) {
     console.log(error);
     return {
       message: "Failed to create a task!",
     };
   }
+      redirect(`/tasks/${taskId}`);
+  
 }
