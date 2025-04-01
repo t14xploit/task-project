@@ -1,7 +1,6 @@
-
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -14,10 +13,12 @@ export default function TaskCreateForm({ projectId }: { projectId: string }) {
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
-    completed:false,
+    completed: false,
   });
 
-  const [state, formAction, isPending] = useActionState(
+  const [isPending, startTransition] = useTransition();
+
+  const [state, formAction] = useActionState(
     createTask.bind(null, projectId),
     { message: "" }
   );
@@ -30,10 +31,12 @@ export default function TaskCreateForm({ projectId }: { projectId: string }) {
   return (
     <form
       className="space-y-4 max-w-4xl mx-auto"
-     action={formAction}
+      action={formAction}
       onSubmit={(e) => {
         e.preventDefault();
-        formAction(new FormData(e.target as HTMLFormElement));
+        startTransition(() => {
+          formAction(new FormData(e.target as HTMLFormElement));
+        });
       }}
     >
       {state.message && (
@@ -62,6 +65,7 @@ export default function TaskCreateForm({ projectId }: { projectId: string }) {
           required
         />
       </div>
+
       <div className="flex gap-2">
         <Checkbox name="completed" id="completed"/>
         <Label htmlFor="completed"> Completed:</Label>
