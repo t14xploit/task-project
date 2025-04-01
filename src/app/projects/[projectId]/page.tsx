@@ -1,3 +1,4 @@
+"use server"
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link"; 
@@ -5,9 +6,18 @@ import { Button } from "@/components/ui/button";
 import DeleteProjectButton from "@/components/DeleteProjectButton";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"; 
 
-export default async function ProjectDetailsPage({ params }: { params: { projectId: string } }) {
-  const project = await prisma.project.findUnique({
-    where: { id: params.projectId },
+
+type Params = Promise<{
+    projectId: string
+}>;
+type Props = {
+    params: Params
+}
+export default async function ProjectDetailsPage( props:Props) {
+const params = await props.params;
+const projectId = params.projectId;
+    const project = await prisma.project.findUnique({
+    where: { id: projectId ,},
     include: { tasks: true },
   });
 
@@ -48,9 +58,9 @@ export default async function ProjectDetailsPage({ params }: { params: { project
         </div>
 
         <div className="mt-6 flex gap-4">
-          <Link href={`/projects/${project.id}/edit`}>
-            <Button variant="outline" className="w-full">Edit Project</Button>
-          </Link>
+        <Button asChild variant="secondary">
+          <Link href={`/project/${project.id}/edit`}>Edit project</Link>
+        </Button>
           <DeleteProjectButton projectId={project.id} />
         </div>
       </CardContent>
