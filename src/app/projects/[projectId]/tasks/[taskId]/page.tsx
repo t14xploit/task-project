@@ -43,7 +43,7 @@ export default async function TaskDetailsPage(props: Props) {
         <div className="mt-6">
           <h3 className="text-lg font-medium">Project:</h3>
           <Link href={`/projects/${task.projectId}`}>
-            <a className="text-blue-500 underline">{task.project.name}</a>
+            {task.project.name}
           </Link>
         </div>
 

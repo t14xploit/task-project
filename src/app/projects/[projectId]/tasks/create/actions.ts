@@ -2,6 +2,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 // Task schema validation
@@ -34,9 +35,7 @@ let taskId:string;
       },
     });
 
-    return {
-      message: `Task "${task.title}" created successfully!`,
-    };
+   
     taskId= task.id;
 
 
@@ -46,6 +45,6 @@ let taskId:string;
       message: "Failed to create a task!",
     };
   }
-  // add redirect later     redirect(`/projects/${projectId}/tasks/${taskId}`);
+redirect(`/projects/${projectId}/tasks/${taskId}`);
 
 }
