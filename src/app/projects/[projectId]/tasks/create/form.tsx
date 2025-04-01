@@ -30,6 +30,7 @@ export default function TaskCreateForm({ projectId }: { projectId: string }) {
   return (
     <form
       className="space-y-4 max-w-4xl mx-auto"
+     action={formAction}
       onSubmit={(e) => {
         e.preventDefault();
         formAction(new FormData(e.target as HTMLFormElement));
