@@ -26,6 +26,7 @@ const projectId = params.projectId;
   }
 
   const formattedDate = project.createdAt.toLocaleDateString();
+  const formattedUpdateDate = project.updatedAt.toLocaleDateString();
 
   return (
     <Card className="max-w-4xl mx-auto mt-8">
@@ -34,6 +35,7 @@ const projectId = params.projectId;
         <p className="text-sm text-gray-500">Description: {project.description??"No description"}</p>
 
         <p className="text-sm text-gray-500">Created at: {formattedDate}</p>
+
       </CardHeader>
       <CardContent>
         <Link href={`/projects/${project.id}/tasks/create`}>
