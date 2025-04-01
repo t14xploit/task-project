@@ -1,6 +1,9 @@
+import CreateProjectForm from "./form";
 
 export default function CreateProjectPage() {
   return (
-    <div> Create Project page</div>
+    <div> 
+        <CreateProjectForm/>
+    </div>
   )
 }
